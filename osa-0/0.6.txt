@@ -1,0 +1,8 @@
+Käyttäjä tekee SPAssa uuden muistiinpanon
+
+note over selain:
+selain tallentaa noten omaan tilaansa
+end note
+
+selain->palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+palvelin-->selain: HTTP 201 created
