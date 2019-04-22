@@ -9,10 +9,14 @@ const App = () => {
 
   const addContact = (event) => {
     event.preventDefault()
-    const newContactObject = {
-      name: newName
+    if (persons.find(person => person.name === newName)) {
+      alert(`person already exists: ${newName}`)
+    } else {
+      const newContactObject = {
+        name: newName
+      }
+      setPersons(persons.concat(newContactObject))
     }
-    setPersons(persons.concat(newContactObject))
   } 
 
   const handleNewContactChange = (event) => {
