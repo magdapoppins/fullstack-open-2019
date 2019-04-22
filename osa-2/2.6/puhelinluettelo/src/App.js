@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import ContactList from './components/ContactList';
+import NewContact from './components/NewContact'
 
 const App = () => {
   const [ persons, setPersons] = useState([
@@ -35,24 +37,15 @@ const App = () => {
   return (
     <div>
       <h2>Puhelinluettelo</h2>
-      <form onSubmit={addContact}>
-        <div>
-          nimi: <input 
-            value={newName}
-            onChange={handleNewContactChange} />
-          <br />
-          numero: <input 
-            value={newNumber}
-            onChange={handleNewNumberChange} />
-        </div>
-        <div>
-          <button type="submit">lisää</button>
-        </div>
-      </form>
+      <NewContact newName={newName} 
+                  setNewName={setNewName} 
+                  newNumber={newNumber} 
+                  setNewNumber={setNewNumber}
+                  handleNewContactChange={handleNewContactChange}
+                  handleNewNumberChange={handleNewNumberChange}
+                  addContact={addContact}/>
       <h2>Numerot</h2>
-      <ul>
-        {persons.map(person => <li key={person.name}>{person.name}, {person.phoneNr}</li>)}
-      </ul>
+      <ContactList contacts={persons} />
     </div>
   )
 }
